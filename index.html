@@ -1647,6 +1647,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  bindRealtimeSync();
 });
 
 // Build vehicle cascades
@@ -1657,26 +1659,92 @@ buildVehicleCascade('v2Year','v2Make','v2Model','v2Trim');
 // 🔧 PASTE YOUR WEB APP URL BELOW (see setup instructions)
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxRuDgMY-J-sW2WfxceKn6jC2UKzHk0zUKztKiC4LStdyS9J1Yff9bMEUV4KZVeLn5ooA/exec';
 
-// Called on every Next click — sends current answers to update the same row
+// Called on every Next click and field edit — sends current answers to update the same row
+let syncTimeout;
+let lastSyncedPayload = '';
+
+function collectLiveFormValues() {
+  const readValue = (id) => {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  };
+
+  const earlyFirstName = readValue('earlyFirstName');
+  const earlyLastName = readValue('earlyLastName');
+  const earlyEmail = readValue('earlyEmail');
+  const earlyMobile = readValue('earlyMobile');
+  const finalFirstName = readValue('firstNameInput');
+  const finalLastName = readValue('lastNameInput');
+  const finalEmail = readValue('emailInput');
+  const finalMobile = readValue('mobileInput');
+
+  if (readValue('zipInput')) answers.zip = readValue('zipInput');
+
+  if (readValue('v1Year')) answers.v1Year = readValue('v1Year');
+  if (readValue('v1Make')) answers.v1Make = readValue('v1Make');
+  if (readValue('v1Model')) answers.v1Model = readValue('v1Model');
+  if (readValue('v1Trim')) answers.v1Trim = readValue('v1Trim');
+
+  if (readValue('v2Year')) answers.v2Year = readValue('v2Year');
+  if (readValue('v2Make')) answers.v2Make = readValue('v2Make');
+  if (readValue('v2Model')) answers.v2Model = readValue('v2Model');
+  if (readValue('v2Trim')) answers.v2Trim = readValue('v2Trim');
+
+  if (readValue('milesFreq')) answers.milesFreq = readValue('milesFreq');
+  if (readValue('milesAmt')) answers.milesAmt = readValue('milesAmt');
+  if (readValue('vehicleDuration')) answers.vehicleDuration = readValue('vehicleDuration');
+
+  answers.firstName = finalFirstName || earlyFirstName || answers.firstName || '';
+  answers.lastName = finalLastName || earlyLastName || answers.lastName || '';
+  answers.email = finalEmail || earlyEmail || answers.email || '';
+  answers.mobile = finalMobile || earlyMobile || answers.mobile || '';
+}
+
 async function syncToSheet(extraFields = {}) {
   if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.includes('YOUR_WEB_APP')) return;
+  collectLiveFormValues();
+
   try {
     const payload = {
       ...answers,
       ...extraFields,
+      currentStep,
+      stepHistory: [...stepHistory],
       sourceUrl: window.location.href,
+      lastUpdatedAt: new Date().toISOString()
     };
+
+    const serializedPayload = JSON.stringify(payload);
+    if (serializedPayload === lastSyncedPayload && !Object.keys(extraFields).length) return;
+    lastSyncedPayload = serializedPayload;
+
     await fetch(GOOGLE_SHEET_URL, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      mode: 'cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: serializedPayload
     });
-  } catch(e) { console.error('Sheet sync error:', e); }
+  } catch(e) {
+    console.error('Sheet sync error:', e);
+  }
+}
+
+function queueSheetSync(extraFields = {}) {
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(() => syncToSheet(extraFields), 350);
+}
+
+function bindRealtimeSync() {
+  const selectors = 'input, select, textarea';
+  document.querySelectorAll(selectors).forEach((field) => {
+    field.addEventListener('input', () => queueSheetSync());
+    field.addEventListener('change', () => queueSheetSync());
+    field.addEventListener('blur', () => queueSheetSync());
+  });
 }
 
 // Legacy alias so any remaining calls still work
-function sendToGoogleSheet(data) { return syncToSheet(); }
+function sendToGoogleSheet(data) { return syncToSheet(data || {}); }
 
 // ── Animations ──────────────────────────────────────────────────────
 const s = document.createElement('style');

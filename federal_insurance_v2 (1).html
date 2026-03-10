@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Federal Insurance – Compare Auto Insurance Providers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a3a6b;
+    --navy-dark: #122a52;
+    --navy-light: #e8edf5;
+    --gold: #c9a227;
+    --gold-dark: #a8831a;
+    --gold-light: #fdf6e3;
+    --border: #d4c08a;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --white: #fff;
+    --bg: #f8f7f4;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(26,58,107,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(201,162,39,0.06) 0%, transparent 60%);
+  }
+
+  /* ── Header ── */
+  header {
+    border-bottom: 2px solid var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    background: var(--navy);
+    padding: 0 32px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-seal {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-text-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .logo-text-sub {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+  }
+  .header-badge svg { color: var(--gold); }
+
+  /* ── Main layout ── */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 20px 40px;
+    gap: 56px;
+  }
+  .hero {
+    flex: 1;
+    max-width: 400px;
+    padding-top: 24px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--gold-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 20px;
+  }
+  .stat {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    border-radius: 8px;
+    padding: 10px 16px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  .stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+
+  /* ── Card ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2ddd0;
+    border-top: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    width: 100%;
+    max-width: 430px;
+    box-shadow: 0 4px 24px rgba(26,58,107,0.10);
+    position: relative;
+  }
+
+  /* ── Step label ── */
+  .step-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 0.01em;
+  }
+  /* Gold "Next" button for personal detail steps */
+  .btn-next-gold {
+    flex: 1;
+    padding: 12px;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-next-gold:hover { background: var(--gold-dark); }
+  /* Personalizing banner */
+  .personalize-banner {
+    background: linear-gradient(135deg, var(--navy-light), var(--gold-light));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    height: 5px;
+    background: #eae8e0;
+    border-radius: 99px;
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy), var(--gold));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+
+  /* ── Question ── */
+  .question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 18px;
+    color: var(--navy);
+    line-height: 1.35;
+  }
+  .q-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  /* ── Option buttons ── */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .opt-btn {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1.5px solid #ddd8cc;
+    border-radius: 7px;
+    background: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-btn::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .opt-btn:hover { border-color: var(--navy); background: var(--navy-light); }
+  .opt-btn:hover::before { border-color: var(--navy); }
+  .opt-btn.selected {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+  .opt-btn.selected::before {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,162,39,0.3);
+  }
+
+  /* Two-col row */
+  .opt-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .opt-row .opt-btn { text-align: center; justify-content: center; }
+  .opt-row .opt-btn::before { display: none; }
+
+  /* ── Dropdown selects ── */
+  .select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .select-wrap { position: relative; }
+  .fed-select {
+    width: 100%;
+    padding: 11px 38px 11px 13px;
+    border: 1.5px solid #ddd8cc;
+    border-radius: 7px;
+    background: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .fed-select:focus { border-color: var(--navy); outline: none; box-shadow: 0 0 0 3px rgba(26,58,107,0.1); }
+  .fed-select:disabled { background: #f5f4f0; color: #bbb; cursor: not-allowed; }
+  .fed-select.error { border-color: #c0392b; }
+  .sel-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  /* ── ZIP step ── */
+  .zip-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  .zip-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .zip-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ddd8cc;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: var(--navy);
+    background: #fafaf8;
+    outline: none;
+    margin-bottom: 14px;
+    transition: border 0.15s;
+  }
+  .zip-input:focus { border-color: var(--navy); background: #fff; }
+
+  /* ── Text inputs ── */
+  .text-input, .email-input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1.5px solid #ddd8cc;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    background: #fafaf8;
+    outline: none;
+    margin-bottom: 10px;
+    transition: border 0.15s;
+  }
+  .text-input:focus, .email-input:focus { border-color: var(--navy); background: #fff; }
+  .text-input::placeholder, .email-input::placeholder { color: #bbb; font-weight: 400; }
+
+  /* ── Navigation ── */
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .btn-back {
+    background: none;
+    border: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 10px 4px;
+    transition: color 0.15s;
+  }
+  .btn-back:hover { color: var(--navy); }
+  .btn-next {
+    flex: 1;
+    padding: 12px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-next:hover { background: var(--navy-dark); }
+
+  .btn-submit {
+    width: 100%;
+    padding: 13px;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: background 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .btn-submit:hover { background: var(--gold-dark); }
+
+  /* ── Legal text ── */
+  .legal-text {
+    font-size: 0.69rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .legal-text a { color: var(--navy); text-decoration: none; }
+  .legal-text a:hover { text-decoration: underline; }
+
+  /* ── Secure badge ── */
+  .secure-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .secure-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #ddd8cc;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Thank you ── */
+  .thank-you { text-align: center; padding: 8px 0; }
+  .thank-you .check-icon {
+    width: 60px; height: 60px;
+    background: var(--navy);
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .thank-you h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--navy);
+  }
+  .thank-you .got-details { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .thank-you .sub-text { font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 18px; }
+  .divider { border: none; border-top: 1px solid #eae8e0; margin: 14px 0; }
+  .contact-box {
+    background: var(--navy-light);
+    border: 1px solid #c8d4e8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+  .contact-role { font-size: 0.75rem; color: #888; }
+  .call-btn {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--navy);
+    color: #fff;
+    border: none; border-radius: 8px;
+    padding: 12px 22px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.97rem; font-weight: 700;
+    cursor: pointer; text-decoration: none;
+    width: 100%; justify-content: center;
+    transition: background 0.15s;
+  }
+  .call-btn:hover { background: var(--navy-dark); }
+
+  /* ── Verifying spinner ── */
+  .verif-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px 0 10px;
+    gap: 16px;
+  }
+  .verif-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--navy); }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    padding: 28px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-logo .logo-text-main { font-size: 1.1rem; }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  .footer-links { display: flex; gap: 18px; }
+  .footer-links a { font-size: 0.78rem; color: var(--gold); text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+  .footer-ca { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  .footer-ca a { color: var(--gold); text-decoration: none; }
+
+  /* ── Utility ── */
+  .hidden { display: none !important; }
+  .step { display: none; }
+  .step.active { display: block; }
+
+  @media (max-width: 720px) {
+    main { flex-direction: column; align-items: center; padding: 28px 14px 28px; gap: 20px; }
+    .hero { text-align: center; padding-top: 0; max-width: 100%; }
+    .hero h1 { font-size: 1.65rem; }
+    .hero-stats { justify-content: center; }
+    header { padding: 0 16px; }
+    .header-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <a class="logo" href="#">
+    <!-- Treasury-style eagle seal SVG -->
+    <svg class="logo-seal" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19" fill="#c9a227" stroke="#a8831a" stroke-width="1"/>
+      <circle cx="20" cy="20" r="15" fill="none" stroke="#1a3a6b" stroke-width="1.2" stroke-dasharray="2 2"/>
+      <!-- Eagle body -->
+      <ellipse cx="20" cy="22" rx="5" ry="6" fill="#1a3a6b"/>
+      <!-- Eagle wings -->
+      <path d="M8 18 Q14 14 20 18 Q26 14 32 18 Q26 22 20 20 Q14 22 8 18Z" fill="#1a3a6b"/>
+      <!-- Eagle head -->
+      <circle cx="20" cy="15" r="3.5" fill="#1a3a6b"/>
+      <!-- Beak -->
+      <path d="M22 15 L24 16.5 L22 16.5Z" fill="#c9a227"/>
+      <!-- Stars top -->
+      <text x="20" y="9" text-anchor="middle" font-size="5" fill="#c9a227">★ ★ ★</text>
+    </svg>
+    <div class="logo-text-wrap">
+      <span class="logo-text-main">The Federal Insurance</span>
+      <span class="logo-text-sub">Compare &amp; Save on Auto Coverage</span>
+    </div>
+  </a>
+  <div class="header-badge">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    256-Bit SSL Secured
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Trusted by 2M+ Americans
+    </div>
+    <h1>Compare Top Auto Insurance <span>Providers</span></h1>
+    <p>Answer a few quick questions and we'll match you with the best rates in your area — in under 2 minutes.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">$947</div>
+        <div class="stat-label">Avg. Annual Savings</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Top Insurers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Free</div>
+        <div class="stat-label">No Obligation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card" id="formCard">
+
+    <!-- ───── STEP 0: ZIP ───── -->
+    <div class="step active" id="step-0">
+      <div class="zip-label">Enter Your ZIP Code</div>
+      <div class="zip-sub">We'll find the best rates available in your area</div>
+      <input class="zip-input" type="text" id="zipInput" maxlength="5" placeholder="_ _ _ _ _" inputmode="numeric" />
+      <button class="btn-next" style="width:100%" onclick="goNext()">Get My Free Quotes →</button>
+      <p class="legal-text" style="margin-top:10px">By continuing, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>.</p>
+    </div>
+
+    <!-- ───── STEP 1: How can we help ───── -->
+    <div class="step" id="step-1">
+      <div class="step-label">🎯 Let's find you the best rate</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:6%"></div></div>
+      <div class="question">How can we help today?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this,'helpType','compare')">I want to compare my current insurance</button>
+        <button class="opt-btn" onclick="selectOpt(this,'helpType','change')">I need to change my coverage</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'helpType','new')">I'm not insured and need coverage</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 3: Lead capture – name, email, mobile ───── -->
+    <div class="step" id="step-3">
+      <div class="step-label">🎯 Almost there — lock in your free quotes!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:16%"></div></div>
+      <div class="question">Last Step — See Your Quotes!</div>
+      <div class="q-sub">Enter your details and we'll match you instantly</div>
+      <input class="text-input" type="text" id="earlyFirstName" placeholder="First Name" />
+      <input class="text-input" type="text" id="earlyLastName" placeholder="Last Name" />
+      <input class="text-input" type="email" id="earlyEmail" placeholder="Email Address" />
+      <input class="text-input" type="tel" id="earlyMobile" placeholder="Mobile Number" inputmode="tel" />
+      <div style="display:flex;gap:10px;margin-top:2px">
+        <button class="btn-back" onclick="goBack()" style="padding:10px 4px;font-weight:700;cursor:pointer;background:none;border:none;font-family:inherit;font-size:0.92rem;color:var(--muted)">‹ Back</button>
+        <button class="btn-submit" onclick="goNext()" style="flex:1;margin-bottom:0">Get My Free Quotes →</button>
+      </div>
+      <p class="legal-text" style="margin-top:10px">By clicking "Get My Free Quotes", you confirm you are at least 18 years old and agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>. You authorize The Federal Insurance and its <a href="#">network partners</a> to contact you via phone, text, or email. Standard rates may apply. Consent is not required to purchase.</p>
+      <div class="secure-badge">
+        <div class="secure-box">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          256-BIT SSL SECURED
+        </div>
+      </div>
+    </div>
+
+    <!-- ───── STEP 4: Active policy last 31 days ───── -->
+    <div class="step" id="step-4">
+      <div class="step-label">✅ Good to know — one quick thing</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:18%"></div></div>
+      <div class="question">Have you had an active car insurance policy in the last 31 days?</div>
+      <div class="opt-row">
+        <button class="opt-btn selected" onclick="selectOpt(this,'activePolicy','Yes')">Yes</button>
+        <button class="opt-btn" onclick="selectOpt(this,'activePolicy','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 4: Vehicle count ───── -->
+    <div class="step" id="step-5">
+      <div class="step-label">🚗 Almost there — tell us about your vehicles</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:24%"></div></div>
+      <div class="question">How many vehicles need coverage?</div>
+      <div class="opt-row" style="grid-template-columns:1fr 1fr 1fr">
+        <button class="opt-btn selected" onclick="selectOpt(this,'vehicleCount','1')">1</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleCount','2')">2</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleCount','3+')">3+</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 5: Bundle ───── -->
+    <div class="step" id="step-6">
+      <div class="step-label">🏠 This helps us unlock bundle savings</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:28%"></div></div>
+      <div class="question">The Federal Insurance could save you over $900 a year with a bundle.</div>
+      <div class="q-sub">Bundle Home + Auto for maximum savings</div>
+      <div class="opt-row">
+        <button class="opt-btn selected" onclick="selectOpt(this,'bundle','yes')">Yes, bundle!</button>
+        <button class="opt-btn" onclick="selectOpt(this,'bundle','no')">No thanks</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 6: Bundle ───── -->
+    <div class="step" id="step-7">
+      <div class="step-label">💰 You could save $900+ per year!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:32%"></div></div>
+      <div class="question">When do you plan to purchase your new insurance policy?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'purchaseTiming','today')">I'd like to buy or change insurance policies today</button>
+        <button class="opt-btn" onclick="selectOpt(this,'purchaseTiming','future')">Sometime in the future</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 7: Purchase timing ───── -->
+    <div class="step" id="step-8">
+      <div class="step-label">⏱️ When are you looking to switch?</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:38%"></div></div>
+      <div class="question">Let's add your first vehicle</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="v1Year" class="fed-select" onchange="onV1YearChange()">
+            <option value="">Vehicle Year</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v1Make" class="fed-select" onchange="onV1MakeChange()" disabled>
+            <option value="">Vehicle Make</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v1Model" class="fed-select" onchange="onV1ModelChange()" disabled>
+            <option value="">Vehicle Model</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v1Trim" class="fed-select" disabled>
+            <option value="">Vehicle Trim</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 8: Vehicle 1 Year/Make/Model/Trim ───── -->
+    <div class="step" id="step-9">
+      <div class="step-label">🚘 Personalizing your best quote now…</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:42%"></div></div>
+      <div class="question">Need to add another vehicle to this policy?</div>
+      <div class="q-sub">You can add up to 4 vehicles</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="selectOpt(this,'addVehicle2','Yes')">Yes</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'addVehicle2','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 9: Add another vehicle? ───── -->
+    <div class="step" id="step-10">
+      <div class="step-label">🚗 More vehicles = more savings potential</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:44%"></div></div>
+      <div class="question">Add your next vehicle</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="v2Year" class="fed-select" onchange="onV2YearChange()">
+            <option value="">Vehicle Year</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v2Make" class="fed-select" onchange="onV2MakeChange()" disabled>
+            <option value="">Vehicle Make</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v2Model" class="fed-select" onchange="onV2ModelChange()" disabled>
+            <option value="">Vehicle Model</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <div class="select-wrap">
+          <select id="v2Trim" class="fed-select" disabled>
+            <option value="">Vehicle Trim</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 10: Vehicle 2 ───── -->
+    <div class="step" id="step-11">
+      <div class="step-label">🚘 Almost done with vehicles!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:48%"></div></div>
+      <div class="question">Do you own or lease this vehicle?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'vehicleOwnership','own')">Own</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleOwnership','finance')">Finance</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleOwnership','lease')">Lease</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 11: Own or lease ───── -->
+    <div class="step" id="step-12">
+      <div class="step-label">📋 This affects your coverage type</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:50%"></div></div>
+      <div class="question">What do you mostly use it for?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'vehicleUse','commuting')">Commuting (to work or school)</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleUse','pleasure')">Pleasure</button>
+        <button class="opt-btn" onclick="selectOpt(this,'vehicleUse','business')">Business</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 12: Vehicle use ───── -->
+    <div class="step" id="step-13">
+      <div class="step-label">🛣️ This is an important rating factor</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:52%"></div></div>
+      <div class="question">How many miles do you usually drive?</div>
+      <div class="q-sub">The national average is 14,000 miles per year</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="milesFreq" class="fed-select">
+            <option value="per_year" selected>Per year</option>
+            <option value="per_month">Per month</option>
+            <option value="per_week">Per week</option>
+            <option value="per_day">Per day</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+        <input class="text-input" type="number" id="milesAmt" placeholder="Enter miles (e.g. 14000)" value="14000" style="margin-bottom:0" />
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 13: Miles driven ───── -->
+    <div class="step" id="step-14">
+      <div class="step-label">📊 Helps us calculate your exact rate</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:54%"></div></div>
+      <div class="question">How long have you had this vehicle?</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="vehicleDuration" class="fed-select">
+            <option value="">Select duration</option>
+            <option value="not_purchased">Not yet purchased</option>
+            <option value="new">Newly purchased (less than 1 month)</option>
+            <option value="1-12months" selected>1 month – 1 year</option>
+            <option value="1-3years">1 – 3 years</option>
+            <option value="3-5years">3 – 5 years</option>
+            <option value="5+years">5+ years</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 14: Vehicle duration ───── -->
+    <div class="step" id="step-15">
+      <div class="step-label">⭐ A few more questions for your personalized best quote</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:58%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What is your gender?</div>
+      <div class="opt-row">
+        <button class="opt-btn selected" onclick="selectOpt(this,'gender','male')">Male</button>
+        <button class="opt-btn" onclick="selectOpt(this,'gender','female')">Female</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 15: Gender ───── -->
+    <div class="step" id="step-16">
+      <div class="step-label">⭐ A few more questions for your personalized best quote</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:61%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What's your marital status?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'maritalStatus','single')">Single</button>
+        <button class="opt-btn" onclick="selectOpt(this,'maritalStatus','married')">Married</button>
+        <button class="opt-btn" onclick="selectOpt(this,'maritalStatus','divorced')">Divorced</button>
+        <button class="opt-btn" onclick="selectOpt(this,'maritalStatus','widowed')">Widowed</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 16: Marital status ───── -->
+    <div class="step" id="step-17">
+      <!-- this slot intentionally empty -->
+    </div>
+
+    <!-- ───── STEP 17: Credit score ───── -->
+    <div class="step" id="step-18">
+      <div class="step-label">💳 This is an important question for your rate</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:65%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What's your credit score?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'creditScore','excellent')">Excellent (720+)</button>
+        <button class="opt-btn" onclick="selectOpt(this,'creditScore','good')">Good (680–719)</button>
+        <button class="opt-btn" onclick="selectOpt(this,'creditScore','average')">Average (580–679)</button>
+        <button class="opt-btn" onclick="selectOpt(this,'creditScore','poor')">Poor (Below 580)</button>
+        <button class="opt-btn" onclick="selectOpt(this,'creditScore','unsure')">Unsure</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 18: Education ───── -->
+    <div class="step" id="step-19">
+      <div class="step-label">🎓 Some carriers reward education levels</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:67%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What's the highest level of education you completed?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this,'education','doctoral')">Doctoral degree</button>
+        <button class="opt-btn" onclick="selectOpt(this,'education','masters')">Master's degree</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'education','bachelors')">Bachelor's degree</button>
+        <button class="opt-btn" onclick="selectOpt(this,'education','highschool')">High school diploma / GED</button>
+        <button class="opt-btn" onclick="selectOpt(this,'education','some_college')">Some college, no degree</button>
+        <button class="opt-btn" onclick="selectOpt(this,'education','no_diploma')">No diploma</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 19: Employment status ───── -->
+    <div class="step" id="step-20">
+      <div class="step-label">💼 Almost done — just a few more!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:70%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What is your employment status?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'employmentStatus','employed')">Employed</button>
+        <button class="opt-btn" onclick="selectOpt(this,'employmentStatus','self_employed')">Self-Employed</button>
+        <button class="opt-btn" onclick="selectOpt(this,'employmentStatus','student')">First Time Student</button>
+        <button class="opt-btn" onclick="selectOpt(this,'employmentStatus','homemaker')">Homemaker</button>
+        <button class="opt-btn" onclick="selectOpt(this,'employmentStatus','retired')">Retired</button>
+        <button class="opt-btn" onclick="selectOpt(this,'employmentStatus','unemployed')">Unemployed</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 20: Job type ───── -->
+    <div class="step" id="step-21">
+      <div class="step-label">💼 Certain professions qualify for discounts</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:72%"></div></div>
+      <div class="personalize-banner">✨ A few more questions to personalize your best quote</div>
+      <div class="question">What type of work do you do?</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="jobType" class="fed-select">
+            <option value="">Select your occupation</option>
+            <option value="accountant">Accountant / CPA</option>
+            <option value="architect">Architect</option>
+            <option value="artist">Artist / Entertainer</option>
+            <option value="attorney">Attorney / Lawyer</option>
+            <option value="business_owner">Business Owner</option>
+            <option value="clergy">Clergy / Religious</option>
+            <option value="consultant">Consultant</option>
+            <option value="dentist">Dentist</option>
+            <option value="doctor">Doctor / Physician</option>
+            <option value="educator">Educator / Teacher</option>
+            <option value="engineer" selected>Engineer</option>
+            <option value="financial">Financial Analyst / Advisor</option>
+            <option value="firefighter">Firefighter</option>
+            <option value="government">Government Employee</option>
+            <option value="healthcare">Healthcare Worker / Nurse</option>
+            <option value="it">IT / Technology</option>
+            <option value="law_enforcement">Law Enforcement / Police</option>
+            <option value="manager">Manager / Supervisor</option>
+            <option value="marketing">Marketing / PR</option>
+            <option value="military_active">Military (Active Duty)</option>
+            <option value="military_veteran">Military (Veteran)</option>
+            <option value="pharmacist">Pharmacist</option>
+            <option value="pilot">Pilot</option>
+            <option value="realtor">Realtor / Real Estate</option>
+            <option value="sales">Sales / Representative</option>
+            <option value="scientist">Scientist / Researcher</option>
+            <option value="trades">Skilled Trades</option>
+            <option value="social_worker">Social Worker</option>
+            <option value="software_dev">Software Developer</option>
+            <option value="therapist">Therapist / Counselor</option>
+            <option value="transportation">Transportation / Driver</option>
+            <option value="veterinarian">Veterinarian</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next-gold" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 21: License age ───── -->
+    <div class="step" id="step-22">
+      <div class="step-label">🪪 This is important for your driver history</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:76%"></div></div>
+      <div class="question">What age did you first get your license?</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="licenseAge" class="fed-select">
+            <option value="">Select age</option>
+            <option value="14">14</option><option value="15">15</option>
+            <option value="16" selected>16</option><option value="17">17</option>
+            <option value="18">18</option><option value="19">19</option>
+            <option value="20">20</option><option value="21">21</option>
+            <option value="22">22</option><option value="23">23</option>
+            <option value="24">24</option><option value="25">25</option>
+            <option value="26">26</option><option value="27">27</option>
+            <option value="28">28</option><option value="29">29</option>
+            <option value="30">30</option><option value="35">35</option>
+            <option value="40">40</option><option value="45">45</option>
+            <option value="50">50</option><option value="55">55</option>
+            <option value="60">60</option><option value="65">65</option>
+            <option value="70">70</option><option value="75">75</option>
+            <option value="80+">80+</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 22: Currently insured? ───── -->
+    <div class="step" id="step-23">
+      <div class="step-label">🛡️ Your current status helps us compare</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:78%"></div></div>
+      <div class="question">Are you currently insured?</div>
+      <div class="opt-row">
+        <button class="opt-btn selected" onclick="selectOpt(this,'currentlyInsured','Yes')">Yes</button>
+        <button class="opt-btn" onclick="selectOpt(this,'currentlyInsured','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 23: Current provider ───── -->
+    <div class="step" id="step-24">
+      <div class="step-label">🔍 We'll find you a better deal than your current one</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:80%"></div></div>
+      <div class="question">Who is your current insurance provider?</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="currentProvider" class="fed-select">
+            <option value="">Select provider</option>
+            <option value="allstate" selected>Allstate</option>
+            <option value="amica">Amica</option>
+            <option value="clearcover">Clearcover</option>
+            <option value="dairyland">Dairyland</option>
+            <option value="erie">Erie Insurance</option>
+            <option value="esurance">Esurance</option>
+            <option value="farmers">Farmers</option>
+            <option value="geico">GEICO</option>
+            <option value="hartford">The Hartford</option>
+            <option value="kemper">Kemper</option>
+            <option value="liberty">Liberty Mutual</option>
+            <option value="lemonade">Lemonade</option>
+            <option value="metlife">MetLife</option>
+            <option value="nationwide">Nationwide</option>
+            <option value="progressive">Progressive</option>
+            <option value="root">Root Insurance</option>
+            <option value="safeco">Safeco</option>
+            <option value="statefarm">State Farm</option>
+            <option value="travelers">Travelers</option>
+            <option value="usaa">USAA</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 24: Insured duration ───── -->
+    <div class="step" id="step-25">
+      <div class="step-label">📅 Loyalty history matters to insurers</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:82%"></div></div>
+      <div class="question">How long have you been continuously insured by your current provider?</div>
+      <div class="options">
+        <button class="opt-btn" onclick="selectOpt(this,'insuredDuration','less_6mo')">Less than 6 months</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'insuredDuration','6-12mo')">6–12 months</button>
+        <button class="opt-btn" onclick="selectOpt(this,'insuredDuration','1-3yr')">1–3 years</button>
+        <button class="opt-btn" onclick="selectOpt(this,'insuredDuration','3yr+')">More than 3 years</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 25: Bodily injury limits ───── -->
+    <div class="step" id="step-26">
+      <div class="step-label">⚖️ This helps match your coverage level</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:83%"></div></div>
+      <div class="question">What are the bodily injury limits closest to your current coverage?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'bodilyInjury','25_50')">$25,000 / $50,000</button>
+        <button class="opt-btn" onclick="selectOpt(this,'bodilyInjury','50_100')">$50,000 / $100,000</button>
+        <button class="opt-btn" onclick="selectOpt(this,'bodilyInjury','100_300')">$100,000 / $300,000</button>
+        <button class="opt-btn" onclick="selectOpt(this,'bodilyInjury','250_500')">$250,000 / $500,000</button>
+        <button class="opt-btn" onclick="selectOpt(this,'bodilyInjury','unknown')">I don't know</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 26: Accidents/tickets ───── -->
+    <div class="step" id="step-27">
+      <div class="step-label">📋 Almost there — this one's important</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:85%"></div></div>
+      <div class="question">Any accidents or tickets in the last 3 years?</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="selectOpt(this,'hasIncidents','Yes')">Yes</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'hasIncidents','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 27: DUI ───── -->
+    <div class="step" id="step-28">
+      <div class="step-label">📋 One more detail about your history</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:87%"></div></div>
+      <div class="question">Did any of your accidents involve a DUI in the last 3 years?</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="selectOpt(this,'hasDUI','Yes')">Yes</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'hasDUI','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 28: Military ───── -->
+    <div class="step" id="step-29">
+      <div class="step-label">🎖️ Military members often qualify for special rates</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:89%"></div></div>
+      <div class="question">Have you or an immediate family member honorably or actively served in the U.S. Military?</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="selectOpt(this,'military','Yes')">Yes</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'military','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 29: Add additional driver? ───── -->
+    <div class="step" id="step-30">
+      <div class="step-label">👥 One last thing — you're almost done!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:92%"></div></div>
+      <div class="question">Would you like to include any other drivers on your policy?</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="selectOpt(this,'addDriver','Yes')">Yes</button>
+        <button class="opt-btn selected" onclick="selectOpt(this,'addDriver','No')">No</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 30: Additional driver name ───── -->
+    <div class="step" id="step-31">
+      <div class="step-label">👤 Tell us about this driver</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:93%"></div></div>
+      <div class="question">Tell us a little about them</div>
+      <input class="text-input" type="text" id="addDriverFirstName" placeholder="First Name" />
+      <input class="text-input" type="text" id="addDriverLastName" placeholder="Last Name" />
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 31: Additional driver gender ───── -->
+    <div class="step" id="step-32">
+      <div class="step-label">👤 A bit more about this driver</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:94%"></div></div>
+      <div class="question">What's their gender?</div>
+      <div class="opt-row">
+        <button class="opt-btn selected" onclick="selectOpt(this,'addDriverGender','male')">Male</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverGender','female')">Female</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 32: Additional driver license age ───── -->
+    <div class="step" id="step-33">
+      <div class="step-label">👤 Almost there with this driver!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:95%"></div></div>
+      <div class="question">What age did they first get their license?</div>
+      <div class="select-group">
+        <div class="select-wrap">
+          <select id="addDriverLicenseAge" class="fed-select">
+            <option value="">Select age</option>
+            <option value="14">14</option><option value="15">15</option>
+            <option value="16" selected>16</option><option value="17">17</option>
+            <option value="18">18</option><option value="19">19</option>
+            <option value="20">20</option><option value="21">21</option>
+            <option value="22">22</option><option value="23">23</option>
+            <option value="24">24</option><option value="25">25</option>
+            <option value="30">30</option><option value="35">35</option>
+            <option value="40">40</option><option value="45">45</option>
+            <option value="50">50</option><option value="55">55</option>
+            <option value="60">60</option><option value="65">65</option>
+            <option value="70">70</option><option value="75">75</option>
+            <option value="80+">80+</option>
+          </select>
+          <span class="sel-arrow">▾</span>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 33: Relationship ───── -->
+    <div class="step" id="step-34">
+      <div class="step-label">🔗 This helps determine joint discounts</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:96%"></div></div>
+      <div class="question">What is their relationship to you?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'addDriverRelationship','spouse')">Spouse</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverRelationship','child')">Child</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverRelationship','other')">Other</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 34: Additional driver marital status ───── -->
+    <div class="step" id="step-35">
+      <div class="step-label">✅ Last question — you're almost done!</div>
+      <div class="progress-wrap"><div class="progress-bar" style="width:97%"></div></div>
+      <div class="question">What is their marital status?</div>
+      <div class="options">
+        <button class="opt-btn selected" onclick="selectOpt(this,'addDriverMarital','single')">Single</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverMarital','married')">Married</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverMarital','divorced')">Divorced</button>
+        <button class="opt-btn" onclick="selectOpt(this,'addDriverMarital','widowed')">Widowed</button>
+      </div>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()">‹ Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- ───── STEP 35: Final – name, mobile, email, submit ───── -->
+    <div class="step" id="step-36">
+      <div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div>
+      <div class="question">Last Step — See Your Quotes!</div>
+      <div class="q-sub">Enter your details and we'll match you instantly</div>
+      <input class="text-input" type="text" id="firstNameInput" placeholder="First Name" />
+      <input class="text-input" type="text" id="lastNameInput" placeholder="Last Name" />
+      <input class="text-input" type="email" id="emailInput" placeholder="Email Address" />
+      <input class="text-input" type="tel" id="mobileInput" placeholder="Mobile Number" inputmode="tel" />
+      <div style="display:flex;gap:10px;margin-top:2px">
+        <button class="btn-back" onclick="goBack()" style="padding:10px 4px;font-weight:700;cursor:pointer;background:none;border:none;font-family:inherit;font-size:0.92rem;color:var(--muted)">‹ Back</button>
+        <button class="btn-submit" onclick="submitForm()" style="margin-bottom:0">Get My Free Quotes →</button>
+      </div>
+      <p class="legal-text" style="margin-top:10px">By clicking "Get My Free Quotes", you confirm you are at least 18 years old and agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>. You authorize The Federal Insurance and its <a href="#">network partners</a> to contact you via phone, text, or email. Standard rates may apply. Consent is not required to purchase.</p>
+      <div class="secure-badge">
+        <div class="secure-box">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          256-BIT SSL SECURED
+        </div>
+      </div>
+    </div>
+
+    <!-- ───── STEP 36: Verifying ───── -->
+    <div class="step" id="step-37">
+      <div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div>
+      <div class="verif-wrap">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="22" stroke="#e8edf5" stroke-width="5"/>
+          <path d="M26 4a22 22 0 0 1 22 22" stroke="#1a3a6b" stroke-width="5" stroke-linecap="round">
+            <animateTransform attributeName="transform" type="rotate" from="0 26 26" to="360 26 26" dur="0.8s" repeatCount="indefinite"/>
+          </path>
+        </svg>
+        <div class="verif-text">Verifying your information…</div>
+        <div style="font-size:0.8rem;color:var(--muted);font-weight:600">Checking 30+ carriers for your best rates</div>
+      </div>
+    </div>
+
+    <!-- ───── STEP 37: Thank You ───── -->
+    <div class="step" id="step-38">
+      <div class="thank-you">
+        <div class="check-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>We've Got Your Details!</h2>
+        <p class="got-details">We're matching you with top-rated providers.</p>
+        <p class="sub-text">Results will be sent to your inbox shortly. You may also be contacted by phone with exclusive offers.</p>
+        <hr class="divider"/>
+        <p class="contact-label" style="margin-bottom:8px">⚡ Get faster results — speak to an advisor</p>
+        <div class="contact-box">
+          <div>
+            <div class="contact-name">Your Insurance Advisor</div>
+            <div class="contact-role">The Federal Insurance — Licensed Agent</div>
+          </div>
+          <a class="call-btn" href="tel:+18005550199" id="callBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now: +1 (800) 555-0199
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+</main>
+
+<!-- Footer -->
+<footer>
+  <a class="logo footer-logo" href="#">
+    <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" fill="#c9a227"/><ellipse cx="20" cy="22" rx="5" ry="6" fill="#1a3a6b"/><path d="M8 18 Q14 14 20 18 Q26 14 32 18 Q26 22 20 20 Q14 22 8 18Z" fill="#1a3a6b"/><circle cx="20" cy="15" r="3.5" fill="#1a3a6b"/></svg>
+    <div class="logo-text-wrap">
+      <span class="logo-text-main">The Federal Insurance</span>
+    </div>
+  </a>
+  <p class="footer-copy">© 2026 The Federal Insurance. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Accessibility</a>
+  </div>
+  <p class="footer-ca">CA Consumers: <a href="#">Do Not Sell My Information</a></p>
+</footer>
+
+<script>
+// ── Vehicle Data ──────────────────────────────────────────────────────
+const VEHICLE_DATA = {
+  makes: ["Acura","Alfa Romeo","Aston Martin","Audi","Bentley","BMW","Buick","Cadillac","Chevrolet","Chrysler","Dodge","Ferrari","Fiat","Ford","Genesis","GMC","Honda","Hyundai","Infiniti","Jaguar","Jeep","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","Maserati","Mazda","McLaren","Mercedes-Benz","MINI","Mitsubishi","Nissan","Porsche","Ram","Rolls-Royce","Subaru","Tesla","Toyota","Volkswagen","Volvo"],
+  models: {
+    "Audi":["A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","Q8","e-tron","e-tron GT","RS3","RS5","RS6","RS7","S3","S4","S5","TT","A6 Sportback e-tron"],
+    "BMW":["2 Series","3 Series","4 Series","5 Series","6 Series","7 Series","8 Series","iX","M3","M4","M5","M8","X1","X2","X3","X4","X5","X6","X7","Z4"],
+    "Chevrolet":["Blazer","Bolt EV","Camaro","Colorado","Corvette","Equinox","Malibu","Silverado 1500","Silverado 2500HD","Suburban","Tahoe","Trailblazer","Traverse","Trax"],
+    "Ford":["Bronco","Bronco Sport","Edge","Escape","Expedition","Explorer","F-150","F-250","Focus","Maverick","Mustang","Mustang Mach-E","Ranger","Transit"],
+    "Honda":["Accord","Civic","CR-V","HR-V","Insight","Odyssey","Passport","Pilot","Ridgeline"],
+    "Toyota":["4Runner","Camry","Corolla","Highlander","Land Cruiser","Prius","RAV4","Sequoia","Sienna","Supra","Tacoma","Tundra","Venza","GR86"],
+    "Tesla":["Cybertruck","Model 3","Model S","Model X","Model Y"],
+    "Nissan":["Altima","Armada","Frontier","Kicks","Leaf","Maxima","Murano","Pathfinder","Rogue","Sentra","Titan","Versa"],
+    "Hyundai":["Elantra","Ioniq 5","Ioniq 6","Kona","Palisade","Santa Cruz","Santa Fe","Sonata","Tucson","Venue"],
+    "Kia":["Carnival","EV6","Forte","K5","Niro","Seltos","Sorento","Sportage","Stinger","Telluride"],
+    "Jeep":["Cherokee","Compass","Gladiator","Grand Cherokee","Grand Wagoneer","Renegade","Wagoneer","Wrangler"],
+    "Ram":["1500","2500","3500","ProMaster","ProMaster City"],
+    "Dodge":["Challenger","Charger","Durango"],
+    "Subaru":["Ascent","BRZ","Crosstrek","Forester","Impreza","Legacy","Outback","Solterra","WRX"],
+    "Volkswagen":["Atlas","Golf","ID.4","Jetta","Passat","Taos","Tiguan"],
+    "Mercedes-Benz":["A-Class","C-Class","CLA","E-Class","EQE","EQS","GLA","GLB","GLC","GLE","GLS","S-Class"],
+    "Lexus":["ES","GX","IS","LC","LS","LX","NX","RX","UX"],
+    "Acura":["ILX","MDX","RDX","TLX"],
+    "Infiniti":["Q50","Q60","QX50","QX55","QX60","QX80"],
+    "Mazda":["CX-30","CX-5","CX-50","CX-90","Mazda3","Mazda6","MX-5 Miata"],
+    "GMC":["Acadia","Canyon","Sierra 1500","Sierra 2500HD","Terrain","Yukon","Yukon XL"],
+    "Buick":["Enclave","Encore","Encore GX","Envision"],
+    "Cadillac":["CT4","CT5","Escalade","Escalade ESV","LYRIQ","XT4","XT5","XT6"],
+    "Lincoln":["Aviator","Corsair","Nautilus","Navigator"],
+    "Volvo":["S60","S90","V60","V90","XC40","XC60","XC90"],
+    "Porsche":["718","911","Cayenne","Macan","Panamera","Taycan"],
+    "Land Rover":["Defender","Discovery","Discovery Sport","Range Rover","Range Rover Evoque","Range Rover Sport","Range Rover Velar"],
+    "Jaguar":["E-PACE","F-PACE","F-TYPE","I-PACE","XE","XF"],
+    "Genesis":["G70","G80","G90","GV70","GV80"],
+    "Mitsubishi":["Eclipse Cross","Mirage","Outlander","Outlander Sport"],
+    "Chrysler":["300","Pacifica","Voyager"],
+    "MINI":["Clubman","Convertible","Countryman","Hardtop"],
+    "Fiat":["500","500X"]
+  },
+  trims: {
+    "A3":["Premium 40 TFSI FWD Sedan","Premium Plus 40 TFSI FWD Sedan","Prestige 40 TFSI FWD Sedan","Premium 45 TFSI quattro Sedan","Premium Plus 45 TFSI quattro Sedan"],
+    "A4":["Premium 40 TFSI FWD Sedan","Premium Plus 40 TFSI FWD Sedan","Prestige 40 TFSI FWD Sedan","S line Premium 45 TFSI quattro"],
+    "Q5":["Premium 45 TFSI quattro","Premium Plus 45 TFSI quattro","Prestige 45 TFSI quattro","e Premium 55 TFSI e quattro"],
+    "Model 3":["Standard Range RWD","Long Range AWD","Performance AWD"],
+    "Model Y":["Standard Range","Long Range AWD","Performance AWD"],
+    "Model S":["Long Range","Plaid"],
+    "Model X":["Long Range","Plaid"],
+    "Cybertruck":["All-Wheel Drive","Cyberbeast"],
+    "F-150":["Regular Cab XL","SuperCab XLT","SuperCrew Lariat","SuperCrew King Ranch","SuperCrew Platinum","SuperCrew Limited","Raptor"],
+    "Camry":["LE","SE","XLE","XSE","TRD","Hybrid LE","Hybrid XLE"],
+    "Civic":["LX","Sport","EX","EX-L","Touring","Type R"],
+    "RAV4":["LE","XLE","XLE Premium","TRD Off-Road","Adventure","Limited","Prime SE","Prime XSE"],
+    "Silverado 1500":["Work Truck","Custom","LT","RST","LTZ","High Country","ZR2"],
+    "default":["Base","S","SE","SL","Limited","Premium","Sport","GT","EX","EX-L","Touring","Prestige","Elite","Luxury","Ultra"]
+  }
+};
+
+function getYearList() {
+  const cy = new Date().getFullYear();
+  const arr = [];
+  for (let y = cy + 2; y >= 1990; y--) arr.push(y.toString());
+  return arr;
+}
+function getModels(make) { return VEHICLE_DATA.models[make] || ["Base Model","Sport","Premium","Limited","Touring"]; }
+function getTrims(model) { return VEHICLE_DATA.trims[model] || VEHICLE_DATA.trims["default"]; }
+
+function buildVehicleCascade(yearId, makeId, modelId, trimId) {
+  const yr = document.getElementById(yearId);
+  const mk = document.getElementById(makeId);
+  const mo = document.getElementById(modelId);
+  const tr = document.getElementById(trimId);
+  if (!yr) return;
+  // Populate years
+  getYearList().forEach(y => { const o=document.createElement('option'); o.value=y; o.textContent=y; yr.appendChild(o); });
+  yr.addEventListener('change', () => {
+    mk.innerHTML='<option value="">Vehicle Make</option>';
+    if (yr.value) { VEHICLE_DATA.makes.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;mk.appendChild(o);}); mk.disabled=false; } else { mk.disabled=true; }
+    mo.innerHTML='<option value="">Vehicle Model</option>'; mo.disabled=true;
+    tr.innerHTML='<option value="">Vehicle Trim</option>'; tr.disabled=true;
+  });
+  mk.addEventListener('change', () => {
+    mo.innerHTML='<option value="">Vehicle Model</option>';
+    if (mk.value) { getModels(mk.value).forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;mo.appendChild(o);}); mo.disabled=false; } else { mo.disabled=true; }
+    tr.innerHTML='<option value="">Vehicle Trim</option>'; tr.disabled=true;
+  });
+  mo.addEventListener('change', () => {
+    tr.innerHTML='<option value="">Vehicle Trim</option>';
+    if (mo.value) { getTrims(mo.value).forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;tr.appendChild(o);}); tr.disabled=false; } else { tr.disabled=true; }
+  });
+}
+
+// ── State ─────────────────────────────────────────────────────────────
+const answers = {
+  sessionId: 'fi-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8)
+};
+let currentStep = 0;
+let stepHistory = [0];
+
+// Steps that are conditional
+// step-9 (v2) only if addVehicle2=Yes
+// step-23,24,25 only if currentlyInsured=Yes
+// step-27 only if hasIncidents=Yes
+// steps 30-34 only if addDriver=Yes
+// step-20 only if employmentStatus=employed or self_employed
+function getStepSequence() {
+  // step-3 = early lead capture form
+  // step-17 slot is empty/skipped (was phone, now phone is removed)
+  const seq = [0,1,3,4,5,6,7,8,9];
+  if (answers.addVehicle2 === 'Yes') seq.push(10);
+  seq.push(11,12,13,14,15,16,18,19,20); // skip 17 (empty phone slot)
+  if (answers.employmentStatus === 'employed' || answers.employmentStatus === 'self_employed') seq.push(21);
+  seq.push(22,23);
+  if (answers.currentlyInsured === 'Yes') seq.push(24,25,26);
+  seq.push(27);
+  if (answers.hasIncidents === 'Yes') seq.push(28);
+  seq.push(29,30);
+  if (answers.addDriver === 'Yes') seq.push(31,32,33,34,35);
+  seq.push(36,37,38);
+  return seq;
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('step-' + n);
+  if (el) { el.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  currentStep = n;
+}
+
+function goNext() {
+  // Validations
+  if (currentStep === 0) {
+    const zip = document.getElementById('zipInput').value.trim();
+    if (!/^\d{5}$/.test(zip)) { shakeInput('zipInput'); return; }
+    answers.zip = zip;
+  }
+  if (currentStep === 8) {
+    const yr = document.getElementById('v1Year').value;
+    const mk = document.getElementById('v1Make').value;
+    const mo = document.getElementById('v1Model').value;
+    const tr = document.getElementById('v1Trim').value;
+    let ok = true;
+    if (!yr) { document.getElementById('v1Year').classList.add('error'); ok=false; }
+    if (!mk) { document.getElementById('v1Make').classList.add('error'); ok=false; }
+    if (!mo) { document.getElementById('v1Model').classList.add('error'); ok=false; }
+    if (!tr) { document.getElementById('v1Trim').classList.add('error'); ok=false; }
+    if (!ok) return;
+    answers.v1Year=yr; answers.v1Make=mk; answers.v1Model=mo; answers.v1Trim=tr;
+    ['v1Year','v1Make','v1Model','v1Trim'].forEach(id=>document.getElementById(id).classList.remove('error'));
+  }
+  if (currentStep === 10) {
+    const yr = document.getElementById('v2Year').value;
+    const mk = document.getElementById('v2Make').value;
+    const mo = document.getElementById('v2Model').value;
+    const tr = document.getElementById('v2Trim').value;
+    let ok = true;
+    if (!yr) { document.getElementById('v2Year').classList.add('error'); ok=false; }
+    if (!mk) { document.getElementById('v2Make').classList.add('error'); ok=false; }
+    if (!mo) { document.getElementById('v2Model').classList.add('error'); ok=false; }
+    if (!tr) { document.getElementById('v2Trim').classList.add('error'); ok=false; }
+    if (!ok) return;
+    answers.v2Year=yr; answers.v2Make=mk; answers.v2Model=mo; answers.v2Trim=tr;
+  }
+  if (currentStep === 13) {
+    answers.milesFreq = document.getElementById('milesFreq').value;
+    answers.milesAmt  = document.getElementById('milesAmt').value;
+  }
+  if (currentStep === 14) {
+    answers.vehicleDuration = document.getElementById('vehicleDuration').value;
+    if (!answers.vehicleDuration) { document.getElementById('vehicleDuration').classList.add('error'); return; }
+  }
+  if (currentStep === 3) {
+    const fn = document.getElementById('earlyFirstName').value.trim();
+    const ln = document.getElementById('earlyLastName').value.trim();
+    const em = document.getElementById('earlyEmail').value.trim();
+    const mob = document.getElementById('earlyMobile').value.trim();
+    const mobDigits = mob.replace(/\D/g,'');
+    if (!fn) shakeInput('earlyFirstName');
+    if (!ln) shakeInput('earlyLastName');
+    if (!em || !em.includes('@')) shakeInput('earlyEmail');
+    if (mobDigits.length < 10) shakeInput('earlyMobile');
+    if (!fn || !ln || !em || !em.includes('@') || mobDigits.length < 10) return;
+    answers.firstName = fn; answers.lastName = ln; answers.email = em; answers.mobile = mob;
+    syncToSheet(); // send early partial lead — row created here
+  }
+  if (currentStep === 36) {
+    const fn = document.getElementById('firstNameInput').value.trim();
+    const ln = document.getElementById('lastNameInput').value.trim();
+    const em = document.getElementById('emailInput').value.trim();
+    const mob = document.getElementById('mobileInput').value.trim();
+    const mobDigits = mob.replace(/\D/g,'');
+    if (!fn) shakeInput('firstNameInput');
+    if (!ln) shakeInput('lastNameInput');
+    if (!em || !em.includes('@')) shakeInput('emailInput');
+    if (mobDigits.length < 10) shakeInput('mobileInput');
+    if (!fn || !ln || !em || !em.includes('@') || mobDigits.length < 10) return;
+    answers.firstName = fn; answers.lastName = ln; answers.email = em; answers.mobile = mob;
+    syncToSheet({ status: 'completed' }); // mark row as completed
+  } else {
+    syncToSheet(); // update same row on every other Next click
+  }
+
+  const seq = getStepSequence();
+  const idx = seq.indexOf(currentStep);
+  if (idx === -1 || idx >= seq.length - 1) return;
+  const next = seq[idx + 1];
+  stepHistory.push(next);
+  showStep(next);
+  if (next === 37) setTimeout(() => { showStep(38); }, 2000); // verifying → thank you
+}
+
+function goBack() {
+  if (stepHistory.length <= 1) return;
+  stepHistory.pop();
+  const prev = stepHistory[stepHistory.length - 1];
+  showStep(prev);
+}
+
+function selectOpt(btn, key, val) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[key] = val;
+  setTimeout(() => goNext(), 260);
+}
+
+function shakeInput(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#c0392b';
+  el.style.animation = 'shake 0.35s ease';
+  setTimeout(() => { el.style.animation=''; el.style.borderColor=''; }, 500);
+}
+
+// Formatting & input listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // ZIP digits only
+  const zip = document.getElementById('zipInput');
+  if (zip) zip.addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,'').slice(0,5); });
+
+  // Mobile formatting on early lead form (step-3) and final step (step-36)
+  ['mobileInput','earlyMobile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g,'').slice(0,10);
+        let f = '';
+        if (v.length>0) f = '(' + v.slice(0,3);
+        if (v.length>=4) f += ') ' + v.slice(3,6);
+        if (v.length>=7) f += '-' + v.slice(6,10);
+        e.target.value = f;
+        el.style.borderColor = '';
+      });
+    }
+  });
+});
+
+// Build vehicle cascades
+buildVehicleCascade('v1Year','v1Make','v1Model','v1Trim');
+buildVehicleCascade('v2Year','v2Make','v2Model','v2Trim');
+
+// ── Google Sheets Integration ──────────────────────────────────────
+// 🔧 PASTE YOUR WEB APP URL BELOW (see setup instructions)
+const GOOGLE_SHEET_URL = 'YOUR_WEB_APP_URL_HERE';
+
+// Called on every Next click — sends current answers to update the same row
+async function syncToSheet(extraFields = {}) {
+  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.includes('YOUR_WEB_APP')) return;
+  try {
+    const payload = {
+      ...answers,
+      ...extraFields,
+      sourceUrl: window.location.href,
+    };
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) { console.error('Sheet sync error:', e); }
+}
+
+// Legacy alias so any remaining calls still work
+function sendToGoogleSheet(data) { return syncToSheet(); }
+
+// ── Animations ──────────────────────────────────────────────────────
+const s = document.createElement('style');
+s.textContent = `
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-7px)}
+    40%{transform:translateX(7px)}
+    60%{transform:translateX(-4px)}
+    80%{transform:translateX(4px)}
+  }
+`;
+document.head.appendChild(s);
+
+// Init
+showStep(0);
+</script>
+</body>
+</html>

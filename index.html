@@ -1479,6 +1479,7 @@ const answers = {
 localStorage.setItem('fi_session_id', answers.sessionId);
 let currentStep = 0;
 let stepHistory = [0];
+let rowCreated = false; // track whether the sheet row has been created yet
 
 // Steps that are conditional
 // step-9 (v2) only if addVehicle2=Yes
@@ -1511,7 +1512,7 @@ function showStep(n) {
 }
 
 function goNext() {
-  // Validations
+  // ── Per-step value capture ──────────────────────────────────────────
   if (currentStep === 0) {
     const zip = document.getElementById('zipInput').value.trim();
     if (!/^\d{5}$/.test(zip)) { shakeInput('zipInput'); return; }
@@ -1552,6 +1553,24 @@ function goNext() {
     answers.vehicleDuration = document.getElementById('vehicleDuration').value;
     if (!answers.vehicleDuration) { document.getElementById('vehicleDuration').classList.add('error'); return; }
   }
+  if (currentStep === 21) {
+    answers.jobType = document.getElementById('jobType').value;
+  }
+  if (currentStep === 22) {
+    answers.licenseAge = document.getElementById('licenseAge').value;
+  }
+  if (currentStep === 24) {
+    answers.currentProvider = document.getElementById('currentProvider').value;
+  }
+  if (currentStep === 31) {
+    answers.addDriverFirstName = document.getElementById('addDriverFirstName').value.trim();
+    answers.addDriverLastName  = document.getElementById('addDriverLastName').value.trim();
+  }
+  if (currentStep === 33) {
+    answers.addDriverLicenseAge = document.getElementById('addDriverLicenseAge').value;
+  }
+
+  // ── Step-3: lead capture form (early in flow) ───────────────────────
   if (currentStep === 3) {
     const fn = document.getElementById('earlyFirstName').value.trim();
     const ln = document.getElementById('earlyLastName').value.trim();
@@ -1564,10 +1583,12 @@ function goNext() {
     if (mobDigits.length < 10) shakeInput('earlyMobile');
     if (!fn || !ln || !em || !em.includes('@') || mobDigits.length < 10) return;
     answers.firstName = fn; answers.lastName = ln; answers.email = em; answers.mobile = mob;
-    syncToSheet({ status: 'completed' }); // step-3 is now the final submit
-    localStorage.removeItem('fi_session_id');
+    // Create the row in the sheet now (partial lead, status = in_progress)
+    rowCreated = true;
+    syncToSheet({ status: 'in_progress', forceCreate: true });
   } else {
-    syncToSheet(); // update same row on every other Next click
+    // Update the row on every other Next click (only after row exists)
+    if (rowCreated) syncToSheet();
   }
 
   const seq = getStepSequence();
@@ -1576,7 +1597,13 @@ function goNext() {
   const next = seq[idx + 1];
   stepHistory.push(next);
   showStep(next);
-  if (next === 37) setTimeout(() => { showStep(38); }, 2000); // verifying → thank you
+
+  // When we reach the verifying step, mark as completed then show thank-you
+  if (next === 37) {
+    syncToSheet({ status: 'Lead Completed' });
+    localStorage.removeItem('fi_session_id');
+    setTimeout(() => { showStep(38); }, 2000);
+  }
 }
 
 function goBack() {
@@ -1632,10 +1659,8 @@ buildVehicleCascade('v1Year','v1Make','v1Model','v1Trim');
 buildVehicleCascade('v2Year','v2Make','v2Model','v2Trim');
 
 // ── Google Sheets Integration ──────────────────────────────────────
-// 🔧 PASTE YOUR WEB APP URL BELOW (see setup instructions)
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzA5fdnqNyzobn6d_mba187xhmTWdDfOjtWSH_quRP2juzz9_5IWMFsD1j_V-wZoyCyyg/exec';
 
-// Called on every Next click and field edit — sends current answers to update the same row
 let syncTimeout;
 let lastSyncedPayload = '';
 
@@ -1645,35 +1670,38 @@ function collectLiveFormValues() {
     return el ? el.value.trim() : '';
   };
 
-  const earlyFirstName = readValue('earlyFirstName');
-  const earlyLastName = readValue('earlyLastName');
-  const earlyEmail = readValue('earlyEmail');
-  const earlyMobile = readValue('earlyMobile');
+  if (readValue('zipInput'))         answers.zip             = readValue('zipInput');
+  if (readValue('earlyFirstName'))   answers.firstName       = readValue('earlyFirstName');
+  if (readValue('earlyLastName'))    answers.lastName        = readValue('earlyLastName');
+  if (readValue('earlyEmail'))       answers.email           = readValue('earlyEmail');
+  if (readValue('earlyMobile'))      answers.mobile          = readValue('earlyMobile');
 
-  if (readValue('zipInput')) answers.zip = readValue('zipInput');
+  if (readValue('v1Year'))           answers.v1Year          = readValue('v1Year');
+  if (readValue('v1Make'))           answers.v1Make          = readValue('v1Make');
+  if (readValue('v1Model'))          answers.v1Model         = readValue('v1Model');
+  if (readValue('v1Trim'))           answers.v1Trim          = readValue('v1Trim');
 
-  if (readValue('v1Year')) answers.v1Year = readValue('v1Year');
-  if (readValue('v1Make')) answers.v1Make = readValue('v1Make');
-  if (readValue('v1Model')) answers.v1Model = readValue('v1Model');
-  if (readValue('v1Trim')) answers.v1Trim = readValue('v1Trim');
+  if (readValue('v2Year'))           answers.v2Year          = readValue('v2Year');
+  if (readValue('v2Make'))           answers.v2Make          = readValue('v2Make');
+  if (readValue('v2Model'))          answers.v2Model         = readValue('v2Model');
+  if (readValue('v2Trim'))           answers.v2Trim          = readValue('v2Trim');
 
-  if (readValue('v2Year')) answers.v2Year = readValue('v2Year');
-  if (readValue('v2Make')) answers.v2Make = readValue('v2Make');
-  if (readValue('v2Model')) answers.v2Model = readValue('v2Model');
-  if (readValue('v2Trim')) answers.v2Trim = readValue('v2Trim');
-
-  if (readValue('milesFreq')) answers.milesFreq = readValue('milesFreq');
-  if (readValue('milesAmt')) answers.milesAmt = readValue('milesAmt');
-  if (readValue('vehicleDuration')) answers.vehicleDuration = readValue('vehicleDuration');
-
-  answers.firstName = earlyFirstName || answers.firstName || '';
-  answers.lastName = earlyLastName || answers.lastName || '';
-  answers.email = earlyEmail || answers.email || '';
-  answers.mobile = earlyMobile || answers.mobile || '';
+  if (readValue('milesFreq'))        answers.milesFreq       = readValue('milesFreq');
+  if (readValue('milesAmt'))         answers.milesAmt        = readValue('milesAmt');
+  if (readValue('vehicleDuration'))  answers.vehicleDuration = readValue('vehicleDuration');
+  if (readValue('jobType'))          answers.jobType         = readValue('jobType');
+  if (readValue('licenseAge'))       answers.licenseAge      = readValue('licenseAge');
+  if (readValue('currentProvider'))  answers.currentProvider = readValue('currentProvider');
+  if (readValue('addDriverFirstName')) answers.addDriverFirstName = readValue('addDriverFirstName');
+  if (readValue('addDriverLastName'))  answers.addDriverLastName  = readValue('addDriverLastName');
+  if (readValue('addDriverLicenseAge')) answers.addDriverLicenseAge = readValue('addDriverLicenseAge');
 }
 
 async function syncToSheet(extraFields = {}) {
   if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.includes('YOUR_WEB_APP')) return;
+  // Never create a new row until the lead capture step (step-3) is completed
+  if (!rowCreated && !extraFields.forceCreate) return;
+
   collectLiveFormValues();
 
   try {
@@ -1681,10 +1709,11 @@ async function syncToSheet(extraFields = {}) {
       ...answers,
       ...extraFields,
       currentStep,
-      stepHistory: [...stepHistory],
       sourceUrl: window.location.href,
       lastUpdatedAt: new Date().toISOString()
     };
+    // Remove internal flag before sending
+    delete payload.forceCreate;
 
     const serializedPayload = JSON.stringify(payload);
     if (serializedPayload === lastSyncedPayload && !Object.keys(extraFields).length) return;
@@ -1697,27 +1726,28 @@ async function syncToSheet(extraFields = {}) {
       body: serializedPayload
     });
 
-    console.log('Sheet sync attempted', payload);
+    console.log('Sheet sync:', payload.status || 'in_progress', '| step:', currentStep);
   } catch(e) {
     console.error('Sheet sync error:', e);
   }
 }
 
-function queueSheetSync(extraFields = {}) {
+function queueSheetSync() {
+  // Only queue if row already exists in the sheet
+  if (!rowCreated) return;
   clearTimeout(syncTimeout);
-  syncTimeout = setTimeout(() => syncToSheet(extraFields), 350);
+  syncTimeout = setTimeout(() => syncToSheet(), 600);
 }
 
 function bindRealtimeSync() {
-  const selectors = 'input, select, textarea';
-  document.querySelectorAll(selectors).forEach((field) => {
-    field.addEventListener('input', () => queueSheetSync());
+  document.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('input',  () => queueSheetSync());
     field.addEventListener('change', () => queueSheetSync());
-    field.addEventListener('blur', () => queueSheetSync());
+    field.addEventListener('blur',   () => queueSheetSync());
   });
 }
 
-// Legacy alias so any remaining calls still work
+// Legacy alias
 function sendToGoogleSheet(data) { return syncToSheet(data || {}); }
 
 // ── Animations ──────────────────────────────────────────────────────

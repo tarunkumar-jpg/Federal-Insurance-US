@@ -1704,29 +1704,26 @@ async function syncToSheet(extraFields = {}) {
 
   collectLiveFormValues();
 
+  const payload = {
+    ...answers,
+    ...extraFields,
+    currentStep,
+    sourceUrl: window.location.href,
+    lastUpdatedAt: new Date().toISOString()
+  };
+  delete payload.forceCreate;
+
+  const serializedPayload = JSON.stringify(payload);
+  if (serializedPayload === lastSyncedPayload && !Object.keys(extraFields).length) return;
+  lastSyncedPayload = serializedPayload;
+
+  // ── Send via GET with encoded payload (works reliably with Apps Script) ──
   try {
-    const payload = {
-      ...answers,
-      ...extraFields,
-      currentStep,
-      sourceUrl: window.location.href,
-      lastUpdatedAt: new Date().toISOString()
-    };
-    // Remove internal flag before sending
-    delete payload.forceCreate;
-
-    const serializedPayload = JSON.stringify(payload);
-    if (serializedPayload === lastSyncedPayload && !Object.keys(extraFields).length) return;
-    lastSyncedPayload = serializedPayload;
-
-    await fetch(GOOGLE_SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: serializedPayload
-    });
-
-    console.log('Sheet sync:', payload.status || 'in_progress', '| step:', currentStep);
+    const url = GOOGLE_SHEET_URL + '?data=' + encodeURIComponent(serializedPayload);
+    // Use no-cors image trick to fire-and-forget without CORS errors
+    const img = new Image();
+    img.src = url;
+    console.log('Sheet sync sent | status:', payload.status || 'in_progress', '| step:', currentStep);
   } catch(e) {
     console.error('Sheet sync error:', e);
   }

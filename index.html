@@ -465,46 +465,54 @@
   /* ── Thank you ── */
   .thank-you { text-align: center; padding: 8px 0; }
   .thank-you .check-icon {
-    width: 60px; height: 60px;
-    background: var(--navy);
-    border-radius: 50%;
-    border: 3px solid var(--gold);
+    width: 64px; height: 64px;
+    background: #4caf7d;
+    border-radius: 16px;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 16px rgba(76,175,125,0.25);
   }
   .thank-you h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--navy);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.35rem; font-weight: 800; margin-bottom: 10px; color: #4caf7d;
+    letter-spacing: -0.01em;
   }
-  .thank-you .got-details { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
-  .thank-you .sub-text { font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 18px; }
-  .divider { border: none; border-top: 1px solid #eae8e0; margin: 14px 0; }
+  .thank-you .got-details { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .thank-you .sub-text { font-size: 0.84rem; color: #666; line-height: 1.55; margin-bottom: 0; }
+  .divider { border: none; border-top: 1px solid #eae8e0; margin: 18px 0 14px; }
+  .faster-label {
+    font-size: 0.72rem; font-weight: 800; color: var(--text);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    margin-bottom: 10px;
+  }
   .contact-box {
-    background: var(--navy-light);
-    border: 1px solid #c8d4e8;
-    border-radius: 10px;
-    padding: 14px 16px;
+    background: #f0faf4;
+    border: 1px solid #b8e6cc;
+    border-radius: 12px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
   .contact-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .contact-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
-  .contact-role { font-size: 0.75rem; color: #888; }
+  .contact-name { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+  .contact-role { font-size: 0.78rem; color: #888; }
   .call-btn {
     display: flex; align-items: center; gap: 10px;
-    background: var(--navy);
+    background: #4caf7d;
     color: #fff;
-    border: none; border-radius: 8px;
-    padding: 12px 22px;
+    border: none; border-radius: 10px;
+    padding: 14px 22px;
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.97rem; font-weight: 700;
+    font-size: 1rem; font-weight: 700;
     cursor: pointer; text-decoration: none;
     width: 100%; justify-content: center;
     transition: background 0.15s;
+    letter-spacing: 0.01em;
   }
-  .call-btn:hover { background: var(--navy-dark); }
+  .call-btn:hover { background: #3d9a6a; }
 
   /* ── Verifying spinner ── */
   .verif-wrap {
@@ -1312,28 +1320,6 @@
       </div>
     </div>
 
-    <!-- ───── STEP 35: Final – name, mobile, email, submit ───── -->
-    <div class="step" id="step-36">
-      <div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div>
-      <div class="question">Last Step — See Your Quotes!</div>
-      <div class="q-sub">Enter your details and we'll match you instantly</div>
-      <input class="text-input" type="text" id="firstNameInput" placeholder="First Name" />
-      <input class="text-input" type="text" id="lastNameInput" placeholder="Last Name" />
-      <input class="text-input" type="email" id="emailInput" placeholder="Email Address" />
-      <input class="text-input" type="tel" id="mobileInput" placeholder="Mobile Number" inputmode="tel" />
-      <div style="display:flex;gap:10px;margin-top:2px">
-        <button class="btn-back" onclick="goBack()" style="padding:10px 4px;font-weight:700;cursor:pointer;background:none;border:none;font-family:inherit;font-size:0.92rem;color:var(--muted)">‹ Back</button>
-        <button class="btn-submit" onclick="submitForm()" style="margin-bottom:0">Get My Free Quotes →</button>
-      </div>
-      <p class="legal-text" style="margin-top:10px">By clicking "Get My Free Quotes", you confirm you are at least 18 years old and agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>. You authorize The Federal Insurance and its <a href="#">network partners</a> to contact you via phone, text, or email. Standard rates may apply. Consent is not required to purchase.</p>
-      <div class="secure-badge">
-        <div class="secure-box">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          256-BIT SSL SECURED
-        </div>
-      </div>
-    </div>
-
     <!-- ───── STEP 36: Verifying ───── -->
     <div class="step" id="step-37">
       <div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div>
@@ -1353,17 +1339,19 @@
     <div class="step" id="step-38">
       <div class="thank-you">
         <div class="check-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h2>We've Got Your Details!</h2>
-        <p class="got-details">We're matching you with top-rated providers.</p>
-        <p class="sub-text">Results will be sent to your inbox shortly. You may also be contacted by phone with exclusive offers.</p>
+        <p class="got-details">We're checking the best insurance options for you.</p>
+        <p class="sub-text">Our team is matching you with top-rated providers. Results will be sent to your inbox shortly.</p>
         <hr class="divider"/>
-        <p class="contact-label" style="margin-bottom:8px">⚡ Get faster results — speak to an advisor</p>
+        <div class="faster-label">
+          <span>⚡</span> GET FASTER RESULTS — TALK TO YOUR
+        </div>
         <div class="contact-box">
           <div>
-            <div class="contact-name">Your Insurance Advisor</div>
-            <div class="contact-role">The Federal Insurance — Licensed Agent</div>
+            <div class="contact-name">Relationship Manager</div>
+            <div class="contact-role">Your Personal Insurance Guide</div>
           </div>
           <a class="call-btn" href="tel:+18005550199" id="callBtn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1511,7 +1499,7 @@ function getStepSequence() {
   if (answers.hasIncidents === 'Yes') seq.push(28);
   seq.push(29,30);
   if (answers.addDriver === 'Yes') seq.push(31,32,33,34,35);
-  seq.push(36,37,38);
+  seq.push(37,38); // step-36 removed (duplicate of step-3)
   return seq;
 }
 
@@ -1576,21 +1564,7 @@ function goNext() {
     if (mobDigits.length < 10) shakeInput('earlyMobile');
     if (!fn || !ln || !em || !em.includes('@') || mobDigits.length < 10) return;
     answers.firstName = fn; answers.lastName = ln; answers.email = em; answers.mobile = mob;
-    syncToSheet(); // send early partial lead — row created here
-  }
-  if (currentStep === 36) {
-    const fn = document.getElementById('firstNameInput').value.trim();
-    const ln = document.getElementById('lastNameInput').value.trim();
-    const em = document.getElementById('emailInput').value.trim();
-    const mob = document.getElementById('mobileInput').value.trim();
-    const mobDigits = mob.replace(/\D/g,'');
-    if (!fn) shakeInput('firstNameInput');
-    if (!ln) shakeInput('lastNameInput');
-    if (!em || !em.includes('@')) shakeInput('emailInput');
-    if (mobDigits.length < 10) shakeInput('mobileInput');
-    if (!fn || !ln || !em || !em.includes('@') || mobDigits.length < 10) return;
-    answers.firstName = fn; answers.lastName = ln; answers.email = em; answers.mobile = mob;
-    syncToSheet({ status: 'completed' }); // mark row as completed
+    syncToSheet({ status: 'completed' }); // step-3 is now the final submit
     localStorage.removeItem('fi_session_id');
   } else {
     syncToSheet(); // update same row on every other Next click
@@ -1634,8 +1608,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const zip = document.getElementById('zipInput');
   if (zip) zip.addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,'').slice(0,5); });
 
-  // Mobile formatting on early lead form (step-3) and final step (step-36)
-  ['mobileInput','earlyMobile'].forEach(id => {
+  // Mobile formatting on early lead form (step-3)
+  ['earlyMobile'].forEach(id => {
     const el = document.getElementById(id);
     if (el) {
       el.addEventListener('input', e => {
@@ -1675,10 +1649,6 @@ function collectLiveFormValues() {
   const earlyLastName = readValue('earlyLastName');
   const earlyEmail = readValue('earlyEmail');
   const earlyMobile = readValue('earlyMobile');
-  const finalFirstName = readValue('firstNameInput');
-  const finalLastName = readValue('lastNameInput');
-  const finalEmail = readValue('emailInput');
-  const finalMobile = readValue('mobileInput');
 
   if (readValue('zipInput')) answers.zip = readValue('zipInput');
 
@@ -1696,10 +1666,10 @@ function collectLiveFormValues() {
   if (readValue('milesAmt')) answers.milesAmt = readValue('milesAmt');
   if (readValue('vehicleDuration')) answers.vehicleDuration = readValue('vehicleDuration');
 
-  answers.firstName = finalFirstName || earlyFirstName || answers.firstName || '';
-  answers.lastName = finalLastName || earlyLastName || answers.lastName || '';
-  answers.email = finalEmail || earlyEmail || answers.email || '';
-  answers.mobile = finalMobile || earlyMobile || answers.mobile || '';
+  answers.firstName = earlyFirstName || answers.firstName || '';
+  answers.lastName = earlyLastName || answers.lastName || '';
+  answers.email = earlyEmail || answers.email || '';
+  answers.mobile = earlyMobile || answers.mobile || '';
 }
 
 async function syncToSheet(extraFields = {}) {
